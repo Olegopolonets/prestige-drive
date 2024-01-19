@@ -1,0 +1,12 @@
+:root {
+  --white: #ffffff;
+  --general-blue: #3470ff;
+  --general-blue-active: #0b44cd;
+
+  --black-filter: #121417;
+  --no-choice-filter: rgba(18, 20, 23, 0.2);
+  --border-filter: #f7f7fb;
+
+  --description-card: rgba(18, 20, 23, 0.5);
+  --border-description-card: rgba(18, 20, 23, 0.1);
+}

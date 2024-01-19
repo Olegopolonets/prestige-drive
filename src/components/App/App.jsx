@@ -1,9 +1,9 @@
 import { Route, Routes } from "react-router-dom";
 import Layout from "../Layout/Layout";
-import HomePage from "../pages/HomePage";
-import CatalogPage from "../pages/CatalogPage";
-import FavoritesPage from "../pages/FavoritesPage";
-import NotFound from "../pages/NotFound";
+import HomePage from "../../pages/HomePage";
+import CatalogPage from "../../pages/CatalogPage";
+import FavoritesPage from "../../pages/FavoritesPage";
+import NotFound from "../../pages/NotFound";
 
 function App() {
   return (
