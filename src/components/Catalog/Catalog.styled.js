@@ -5,3 +5,95 @@ export const StyledCarsList = styled.ul`
   flex-wrap: wrap;
   gap: 29px;
 `;
+
+export const StyledCard = styled.li`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 274px;
+  height: 425px;
+  margin-bottom: 50px;
+  position: relative;
+  img {
+    border-radius: 14px;
+    margin-bottom: 8px;
+    position: relative;
+  }
+`;
+
+export const GradientIMG = styled.div`
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 268px;
+  border-radius: 14px;
+  background: var(--gradient-img);
+  z-index: 2;
+`;
+
+export const StyledCardInfo = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 8px;
+  h2,
+  p {
+    font-family: "Manrope Medium";
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--descr-text);
+    span {
+      color: var(--general-blue);
+    }
+  }
+`;
+export const StyledCardDescription = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 28px;
+  p,
+  span {
+    font-family: "Manrope Regular";
+    font-size: 12px;
+    color: var(--accent-descr-text);
+  }
+`;
+
+export const StyledButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 44px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  border-radius: 12px;
+  background-color: var(--general-blue);
+  border: none;
+  outline: transparent;
+  font-family: "Manrope SemiBold";
+  font-size: 14px;
+  line-height: 1.43;
+  color: var(--white);
+  transition: background-color 0.5s linear;
+  &:hover,
+  &:focus {
+    background: var(--general-blue-active);
+  }
+`;
+
+export const IconButton = styled.button`
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 10;
+  background: transparent;
+  border: none;
+  svg {
+    fill: var(--white);
+    width: 18px;
+    height: 18px;
+  }
+`;
