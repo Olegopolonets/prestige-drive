@@ -2,10 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 import { fetchCarsThunk } from "./operations.js";
 
 const initialState = {
-  cars: {
-    items: [],
-    isLoading: false,
-  },
+  items: [],
+  isLoading: false,
 };
 
 export const carsSlice = createSlice({
@@ -18,8 +16,8 @@ export const carsSlice = createSlice({
   //   },
   extraReducers: (builder) => {
     builder.addCase(fetchCarsThunk.fulfilled, (state, { payload }) => {
-      state.cars.items = payload;
-      state.cars.isLoading = false;
+      state.items = [...state.items, ...payload];
+      state.isLoading = false;
     });
   },
 });

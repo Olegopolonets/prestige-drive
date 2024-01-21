@@ -27,6 +27,7 @@ export const GradientIMG = styled.div`
   width: 100%;
   height: 268px;
   border-radius: 14px;
+  opacity: 0.1;
   background: var(--gradient-img);
   z-index: 2;
 `;
@@ -95,5 +96,21 @@ export const IconButton = styled.button`
     fill: var(--white);
     width: 18px;
     height: 18px;
+  }
+`;
+export const StyledButtonLoadMore = styled.button`
+  color: var(--general-blue);
+  font-family: "Manrope Medium";
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  text-decoration-line: underline;
+  margin: 0 auto;
+  background: transparent;
+  border: none;
+
+  &:hover,
+  &:focus {
+    color: var(--general-blue-active);
   }
 `;
