@@ -10,12 +10,26 @@ import {
   StyledCardInfo,
 } from "./Catalog.styled";
 import { useState } from "react";
-import { listFavorite } from "../../redux/selectors";
+import {
+  listFavorite,
+  modalIsOpen,
+  selecClickCardId,
+} from "../../redux/selectors";
 import { useDispatch, useSelector } from "react-redux";
-import { addFavorite, deleteFavorite } from "../../redux/carsSlice";
+import {
+  addFavorite,
+  changeModalOpen,
+  deleteFavorite,
+  changeClickCardId,
+} from "../../redux/carsSlice";
+import Modal from "../Modal/Modal";
 
 const Card = ({ item }) => {
   const favoritesCars = useSelector(listFavorite);
+  //modal
+  const isModalOpen = useSelector(modalIsOpen);
+  const selectedId = useSelector(selecClickCardId);
+  //modal
   const dispatch = useDispatch();
 
   const [isFavorite, setIsFavorite] = useState(() =>
@@ -45,7 +59,6 @@ const Card = ({ item }) => {
           {(!isFavorite && <FaRegHeart />) || (
             <FaHeart style={{ fill: "blue" }} />
           )}
-          {/* {isFavorite && <FaHeart style={{ fill: "blue" }} />} */}
         </IconButton>
         <StyledCardInfo>
           <h2>
@@ -68,7 +81,17 @@ const Card = ({ item }) => {
           <span>|</span>
           <p>{item?.accessories[0]}</p>
         </StyledCardDescription>
-        <StyledButton type="button">Learn more</StyledButton>
+        <StyledButton
+          type="button"
+          onClick={() => {
+            dispatch(changeModalOpen(true));
+            dispatch(changeClickCardId(item?.id));
+          }}
+        >
+          Learn more
+        </StyledButton>
+
+        {isModalOpen && selectedId === item?.id && <Modal item={item} />}
       </StyledCard>
     </>
   );

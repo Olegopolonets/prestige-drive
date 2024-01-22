@@ -5,7 +5,11 @@ const initialState = {
   items: [],
   isLoading: false,
   favoriteList: [],
+  //
+  isLoadMore: true,
   firstLoad: true,
+  modalIsOpen: false,
+  clickCardId: "",
 };
 
 export const carsSlice = createSlice({
@@ -23,15 +27,33 @@ export const carsSlice = createSlice({
     isFirstLoad: (state, { payload }) => {
       state.firstLoad = payload;
     },
+    changeModalOpen: (state, { payload }) => {
+      state.modalIsOpen = payload;
+    },
+    changeClickCardId: (state, { payload }) => {
+      state.clickCardId = payload;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchCarsThunk.fulfilled, (state, { payload }) => {
-      state.items = [...state.items, ...payload];
-      state.isLoading = false;
+      if (payload.length < 12) {
+        state.items = [...state.items, ...payload];
+        state.isLoading = false;
+        state.isLoadMore = false;
+      } else {
+        state.items = [...state.items, ...payload];
+        state.isLoading = false;
+      }
     });
   },
 });
 
-export const { addFavorite, deleteFavorite, isFirstLoad } = carsSlice.actions;
+export const {
+  addFavorite,
+  deleteFavorite,
+  isFirstLoad,
+  changeModalOpen,
+  changeClickCardId,
+} = carsSlice.actions;
 
 export default carsSlice.reducer;

@@ -2,7 +2,11 @@ import { useEffect, useState } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCarsThunk } from "../../redux/operations.js";
-import { selectFirstLoad, selectorCars } from "../../redux/selectors.js";
+import {
+  selectFirstLoad,
+  selectisLoadMore,
+  selectorCars,
+} from "../../redux/selectors.js";
 import { StyledContainer } from "../Container/Container.styled.js";
 // import { FaRegHeart } from "react-icons/fa";
 // import { FaHeart } from "react-icons/fa6";
@@ -19,6 +23,7 @@ const Catalog = () => {
   const [page, setPage] = useState(1);
   const dispatch = useDispatch();
   const firstLoad = useSelector(selectFirstLoad);
+  const isLoadMore = useSelector(selectisLoadMore);
   useEffect(() => {
     if (firstLoad) {
       dispatch(fetchCarsThunk(page));
@@ -28,11 +33,13 @@ const Catalog = () => {
   }, [dispatch]);
 
   const allCars = useSelector(selectorCars);
-  console.log(allCars);
+  console.log("довжина", allCars.length);
 
-  const handleLearnMoreClick = () => {
-    setPage(page + 1);
-    dispatch(fetchCarsThunk(page));
+  const handleLoadMoreClick = () => {
+    if (isLoadMore) {
+      setPage(page + 1);
+      dispatch(fetchCarsThunk(page));
+    }
   };
 
   return (
@@ -44,11 +51,13 @@ const Catalog = () => {
               return <Card key={index} item={item} />;
             })}
           </StyledCarsList>
-          <StyledWrapperButton>
-            <StyledButtonLoadMore type="button" onClick={handleLearnMoreClick}>
-              Load more
-            </StyledButtonLoadMore>
-          </StyledWrapperButton>
+          {isLoadMore && (
+            <StyledWrapperButton>
+              <StyledButtonLoadMore type="button" onClick={handleLoadMoreClick}>
+                Load more
+              </StyledButtonLoadMore>
+            </StyledWrapperButton>
+          )}
         </StyledCatalog>
       </StyledContainer>
     </>
