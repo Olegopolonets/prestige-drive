@@ -32,9 +32,7 @@ const Card = ({ item }) => {
   //modal
   const dispatch = useDispatch();
 
-  const [isFavorite, setIsFavorite] = useState(() =>
-    favoritesCars?.some((car) => car.id === item.id)
-  );
+  const isFavorite = favoritesCars?.some((car) => car.id === item.id);
 
   const changeFavoriteStates = () => {
     if (isFavorite) {
@@ -42,7 +40,6 @@ const Card = ({ item }) => {
     } else {
       dispatch(addFavorite(item));
     }
-    setIsFavorite(!isFavorite);
   };
 
   return (
