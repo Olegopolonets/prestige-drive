@@ -3,7 +3,7 @@ import Layout from "../Layout/Layout";
 import HomePage from "../../pages/HomePage";
 import CatalogPage from "../../pages/CatalogPage";
 import FavoritesPage from "../../pages/FavoritesPage";
-import NotFound from "../../pages/NotFound";
+import NotFoundPage from "../../pages/NotFoundPage";
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
           <Route path="/catalog" element={<CatalogPage />}></Route>
           <Route path="/favorites" element={<FavoritesPage />}></Route>
         </Route>
-        <Route path="*" element={<NotFound />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </>
   );

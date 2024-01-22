@@ -89,6 +89,7 @@ export const IconButton = styled.button`
   position: absolute;
   top: 14px;
   right: 14px;
+  padding: 10px;
 
   background: transparent;
   border: none;

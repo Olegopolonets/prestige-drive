@@ -34,4 +34,5 @@ export const StyledLogo = styled(NavLink)`
   align-items: center;
   gap: 5px;
   font-size: 20px;
+  color: var(--white);
 `;

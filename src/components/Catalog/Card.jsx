@@ -10,13 +10,25 @@ import {
   StyledCardInfo,
 } from "./Catalog.styled";
 import { useState } from "react";
+import { listFavorite } from "../../redux/selectors";
+import { useDispatch, useSelector } from "react-redux";
+import { addFavorite, deleteFavorite } from "../../redux/carsSlice";
 
 const Card = ({ item }) => {
-  const [favorite, setFavorite] = useState(false);
+  const favoritesCars = useSelector(listFavorite);
+  const dispatch = useDispatch();
 
-  const handleFavoriteStatus = () => {
-    setFavorite(!favorite);
-    localStorage.setItem("favoriteCar", JSON.stringify(item));
+  const [isFavorite, setIsFavorite] = useState(() =>
+    favoritesCars?.some((car) => car.id === item.id)
+  );
+
+  const changeFavoriteStates = () => {
+    if (isFavorite) {
+      dispatch(deleteFavorite(item.id));
+    } else {
+      dispatch(addFavorite(item));
+    }
+    setIsFavorite(!isFavorite);
   };
 
   return (
@@ -29,9 +41,11 @@ const Card = ({ item }) => {
           height={268}
         />
         <GradientIMG></GradientIMG>
-        <IconButton type="button" onClick={handleFavoriteStatus}>
-          {favorite === false && <FaRegHeart />}
-          {favorite === true && <FaHeart />}
+        <IconButton type="button" onClick={changeFavoriteStates}>
+          {(!isFavorite && <FaRegHeart />) || (
+            <FaHeart style={{ fill: "blue" }} />
+          )}
+          {/* {isFavorite && <FaHeart style={{ fill: "blue" }} />} */}
         </IconButton>
         <StyledCardInfo>
           <h2>

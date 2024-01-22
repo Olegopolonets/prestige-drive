@@ -1,25 +1,29 @@
 // import React from 'react'
 
 import Card from "../Catalog/Card.jsx";
-import { StyledCarsList } from "../Catalog/Catalog.styled";
+import { useSelector } from "react-redux";
+import { StyledCarsList, StyledCatalog } from "../Catalog/Catalog.styled";
 import { StyledContainer } from "../Container/Container.styled";
+import { listFavorite } from "../../redux/selectors";
 
 const Favorites = () => {
-  const favorites = JSON.parse(localStorage.getItem("favoriteCar"));
-  console.dir(favorites);
-
-  const myArray = [];
-  myArray.push(favorites);
+  const favoritesCars = useSelector(listFavorite);
 
   return (
     <StyledContainer>
-      <StyledCarsList>
+      <StyledCatalog>
         <StyledCarsList>
-          {myArray?.map((item, index) => {
+          {favoritesCars.length === 0 && (
+            <h2>
+              You have not yet added the car to{" "}
+              <span style={{ color: "blue" }}>Favorites</span>.
+            </h2>
+          )}
+          {favoritesCars?.map((item, index) => {
             return <Card key={index} item={item} />;
           })}
         </StyledCarsList>
-      </StyledCarsList>
+      </StyledCatalog>
     </StyledContainer>
   );
 };

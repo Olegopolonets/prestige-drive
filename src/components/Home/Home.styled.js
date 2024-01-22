@@ -31,7 +31,7 @@ export const StyledHome = styled.section`
 
     &:hover {
       border-color: var(--general-blue);
-      background-color: var(--modal-accent-bg);
+      transform: scale(0.9);
       color: var(--general-blue);
     }
   }
@@ -54,6 +54,13 @@ export const StyledHomeInfo = styled.section`
     font-size: 22px;
     line-height: 1.5;
   }
+`;
+
+export const StyledAdvantages = styled.section`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
 `;
 
 export const StyledHomeList = styled.ul`

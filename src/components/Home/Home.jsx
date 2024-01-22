@@ -3,7 +3,12 @@ import { ImHeadphones } from "react-icons/im";
 import { ImCoinDollar } from "react-icons/im";
 import { FaCarRear } from "react-icons/fa6";
 import { GiCarKey } from "react-icons/gi";
-import { StyledHome, StyledHomeInfo, StyledHomeList } from "./Home.styled";
+import {
+  StyledAdvantages,
+  StyledHome,
+  StyledHomeInfo,
+  StyledHomeList,
+} from "./Home.styled";
 import { NavLink } from "react-router-dom";
 const Home = () => {
   return (
@@ -31,31 +36,34 @@ const Home = () => {
             inexpensive.
           </p>
         </StyledHomeInfo>
-        <StyledHomeList>
-          <li>
-            <ImHeadphones size={100} />
-            <h2>Assistance</h2>
-            <p>Support on the road 24 hours a day</p>
-          </li>
+        <StyledAdvantages>
+          <h2>Our advantages</h2>
+          <StyledHomeList>
+            <li>
+              <ImHeadphones size={100} />
+              <h2>Assistance</h2>
+              <p>Support on the road 24 hours a day</p>
+            </li>
 
-          <li>
-            <ImCoinDollar size={100} />
-            <h2>Affordable prices</h2>
-            <p>Car rental with PD it is always beneficial</p>
-          </li>
+            <li>
+              <ImCoinDollar size={100} />
+              <h2>Affordable prices</h2>
+              <p>Car rental with PD it is always beneficial</p>
+            </li>
 
-          <li>
-            <FaCarRear size={100} />
-            <h2>Serviceable cars</h2>
-            <p>Our cars pass regular technical inspection</p>
-          </li>
+            <li>
+              <FaCarRear size={100} />
+              <h2>Serviceable cars</h2>
+              <p>Our cars pass regular technical inspection</p>
+            </li>
 
-          <li>
-            <GiCarKey size={100} />
-            <h2>Free delivery</h2>
-            <p>When renting for more than 3 days</p>
-          </li>
-        </StyledHomeList>
+            <li>
+              <GiCarKey size={100} />
+              <h2>Free delivery</h2>
+              <p>When renting for more than 3 days</p>
+            </li>
+          </StyledHomeList>
+        </StyledAdvantages>
       </StyledContainer>
     </>
   );
