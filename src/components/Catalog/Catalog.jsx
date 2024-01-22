@@ -6,7 +6,12 @@ import { selectorCars } from "../../redux/selectors.js";
 import { StyledContainer } from "../Container/Container.styled.js";
 // import { FaRegHeart } from "react-icons/fa";
 // import { FaHeart } from "react-icons/fa6";
-import { StyledButtonLoadMore, StyledCarsList } from "./Catalog.styled.js";
+import {
+  StyledButtonLoadMore,
+  StyledCarsList,
+  StyledCatalog,
+  StyledWrapperButton,
+} from "./Catalog.styled.js";
 import Card from "./Card.jsx";
 
 const Catalog = () => {
@@ -28,15 +33,18 @@ const Catalog = () => {
   return (
     <>
       <StyledContainer>
-        <StyledCarsList>
-          {allCars?.map((item, index) => {
-            return <Card key={index} item={item} />;
-          })}
-        </StyledCarsList>
-        <StyledButtonLoadMore type="button" onClick={handleLearnMoreClick}>
-          {/*  */}
-          Load more
-        </StyledButtonLoadMore>
+        <StyledCatalog>
+          <StyledCarsList>
+            {allCars?.map((item, index) => {
+              return <Card key={index} item={item} />;
+            })}
+          </StyledCarsList>
+          <StyledWrapperButton>
+            <StyledButtonLoadMore type="button" onClick={handleLearnMoreClick}>
+              Load more
+            </StyledButtonLoadMore>
+          </StyledWrapperButton>
+        </StyledCatalog>
       </StyledContainer>
     </>
   );

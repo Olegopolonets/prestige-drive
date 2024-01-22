@@ -18,6 +18,7 @@ export const StyledCard = styled.li`
     border-radius: 14px;
     margin-bottom: 8px;
     position: relative;
+    z-index: -1;
   }
 `;
 
@@ -29,7 +30,6 @@ export const GradientIMG = styled.div`
   border-radius: 14px;
   opacity: 0.1;
   background: var(--gradient-img);
-  z-index: 2;
 `;
 
 export const StyledCardInfo = styled.div`
@@ -89,7 +89,7 @@ export const IconButton = styled.button`
   position: absolute;
   top: 14px;
   right: 14px;
-  z-index: 10;
+
   background: transparent;
   border: none;
   svg {
@@ -98,6 +98,19 @@ export const IconButton = styled.button`
     height: 18px;
   }
 `;
+
+export const StyledWrapperButton = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const StyledCatalog = styled.div`
+  padding-top: 150px;
+  padding-bottom: 150px;
+`;
+
 export const StyledButtonLoadMore = styled.button`
   color: var(--general-blue);
   font-family: "Manrope Medium";
@@ -105,7 +118,6 @@ export const StyledButtonLoadMore = styled.button`
   font-weight: 500;
   line-height: 1.5;
   text-decoration-line: underline;
-  margin: 0 auto;
   background: transparent;
   border: none;
 

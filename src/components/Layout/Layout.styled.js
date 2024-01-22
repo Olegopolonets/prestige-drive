@@ -7,6 +7,12 @@ export const StyledHeader = styled.header`
   padding-bottom: 20px;
   background: var(--general-blue);
 
+  div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 50px;
+  }
   nav {
     display: flex;
     gap: 30px;
@@ -21,4 +27,11 @@ export const StyledNavLink = styled(NavLink)`
     color: white;
     text-decoration: underline;
   }
+`;
+
+export const StyledLogo = styled(NavLink)`
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 20px;
 `;

@@ -1,6 +1,6 @@
 // import React from 'react'
 
-import { FaRegHeart } from "react-icons/fa";
+import { FaHeart, FaRegHeart } from "react-icons/fa";
 import {
   GradientIMG,
   IconButton,
@@ -9,8 +9,16 @@ import {
   StyledCardDescription,
   StyledCardInfo,
 } from "./Catalog.styled";
+import { useState } from "react";
 
 const Card = ({ item }) => {
+  const [favorite, setFavorite] = useState(false);
+
+  const handleFavoriteStatus = () => {
+    setFavorite(!favorite);
+    localStorage.setItem("favoriteCar", JSON.stringify(item));
+  };
+
   return (
     <>
       <StyledCard key={item.id}>
@@ -21,9 +29,9 @@ const Card = ({ item }) => {
           height={268}
         />
         <GradientIMG></GradientIMG>
-        <IconButton type="button">
-          <FaRegHeart />
-          {/* <FaHeart /> */}
+        <IconButton type="button" onClick={handleFavoriteStatus}>
+          {favorite === false && <FaRegHeart />}
+          {favorite === true && <FaHeart />}
         </IconButton>
         <StyledCardInfo>
           <h2>
