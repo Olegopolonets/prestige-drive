@@ -16,12 +16,12 @@ import {
   StyledButtonLoadMore,
   StyledCarsList,
   StyledCatalog,
-  StyledFiltersForm,
-  StyledInputFilter,
-  StyledInputFrom,
-  StyledInputTo,
-  StyledNotifyEmpty,
-  StyledSelectFilter,
+  StyledEmpty,
+  StyledFilterInput,
+  StyledFormFilters,
+  StyledFromInput,
+  StyledSelect,
+  StyledToInput,
   StyledWrapperButton,
   selectStyle,
 } from "./Catalog.styled.js";
@@ -137,8 +137,8 @@ const Catalog = () => {
     <>
       <StyledContainer>
         <StyledCatalog>
-          <StyledFiltersForm onSubmit={filterSearch}>
-            <StyledSelectFilter>
+          <StyledFormFilters onSubmit={filterSearch}>
+            <StyledSelect>
               <label htmlFor="make">Car brand</label>
               <Select
                 name="make"
@@ -154,9 +154,9 @@ const Catalog = () => {
                   IndicatorSeparator: () => null,
                 }}
               />
-            </StyledSelectFilter>
+            </StyledSelect>
 
-            <StyledSelectFilter>
+            <StyledSelect>
               <label htmlFor="rentalPrice">Price/ 1 hour</label>
               <Select
                 options={arrOfPrices.map((price) => ({
@@ -172,24 +172,24 @@ const Catalog = () => {
                   IndicatorSeparator: () => null,
                 }}
               />
-            </StyledSelectFilter>
+            </StyledSelect>
 
-            <StyledSelectFilter>
+            <StyledSelect>
               <label>Сar mileage / km</label>
 
-              <StyledInputFilter>
-                <StyledInputFrom type="number" placeholder="From" name="from" />
-                <StyledInputTo type="number" placeholder="To" name="to" />
+              <StyledFilterInput>
+                <StyledFromInput type="number" placeholder="From" name="from" />
+                <StyledToInput type="number" placeholder="To" name="to" />
 
                 <button type="submit">Search</button>
-              </StyledInputFilter>
-            </StyledSelectFilter>
-          </StyledFiltersForm>
+              </StyledFilterInput>
+            </StyledSelect>
+          </StyledFormFilters>
 
           {filteredGallery?.length === 0 && (
-            <StyledNotifyEmpty>
+            <StyledEmpty>
               We have no cars matching your filter request
-            </StyledNotifyEmpty>
+            </StyledEmpty>
           )}
 
           <StyledCarsList>

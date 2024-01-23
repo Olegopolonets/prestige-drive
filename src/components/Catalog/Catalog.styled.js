@@ -196,7 +196,7 @@ export const selectStyle = {
   },
 };
 
-export const StyledFiltersForm = styled.form`
+export const StyledFormFilters = styled.form`
   display: flex;
   gap: 18px;
   width: 100%;
@@ -232,12 +232,12 @@ export const StyledFiltersForm = styled.form`
   }
 `;
 
-export const StyledSelectFilter = styled.div`
+export const StyledSelect = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
 `;
-export const StyledInputFilter = styled.div`
+export const StyledFilterInput = styled.div`
   display: flex;
 
   input {
@@ -255,19 +255,19 @@ export const StyledInputFilter = styled.div`
     }
   }
 `;
-export const StyledInputFrom = styled.input`
+export const StyledFromInput = styled.input`
   border-right: 1px solid rgba(138, 138, 137, 0.2);
   width: 160px;
   border-radius: 14px 0px 0px 14px;
 `;
 
-export const StyledInputTo = styled.input`
+export const StyledToInput = styled.input`
   border-radius: 0px 14px 14px 0px;
   border-right: none;
   width: 160px;
 `;
 
-export const StyledNotifyEmpty = styled.h2`
+export const StyledEmpty = styled.h2`
   display: flex;
   align-items: center;
   justify-content: center;
