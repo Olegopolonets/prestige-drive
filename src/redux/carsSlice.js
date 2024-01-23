@@ -19,11 +19,15 @@ export const carsSlice = createSlice({
   reducers: {
     addFavorite: (state, { payload }) => {
       state.favoriteList.push(payload);
+      toast.success(
+        `The ${payload.make} ${payload.model} is added to the "Favorites"!`
+      );
     },
     deleteFavorite: (state, { payload }) => {
       state.favoriteList = state.favoriteList.filter(
         (car) => car.id !== payload
       );
+      toast.error(`The car has been removed to the "Favorites"!`);
     },
     isFirstLoad: (state, { payload }) => {
       state.firstLoad = payload;
@@ -51,7 +55,7 @@ export const carsSlice = createSlice({
       })
       .addCase(fetchCarsThunk.rejected, (state, action) => {
         state.isLoading = false;
-        toast.error(`Failed to delete transaction: ${action.payload}`);
+        toast.error(`Error loading data: ${action.payload}`);
       });
   },
 });
