@@ -31,7 +31,7 @@ export const carsSlice = createSlice({
       state.favoriteList = state.favoriteList.filter(
         (car) => car.id !== payload
       );
-      toast.error(`The car has been removed to the "Favorites"!`);
+      toast.warning(`The car has been removed to the "Favorites"!`);
     },
     isFirstLoad: (state, { payload }) => {
       state.firstLoad = payload;

@@ -17,6 +17,6 @@ export const StyledNavLink = styled(NavLink)`
   transition: all 0.3s linear;
   &:hover {
     color: var(--general-blue-active);
-    font-size: 600px;
+    font-size: 100px;
   }
 `;
