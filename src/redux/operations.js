@@ -13,7 +13,6 @@ export const fetchCarsThunk = createAsyncThunk(
         limit: 12,
       });
       const { data } = await axios.get(`cars?${params}`);
-      console.log(data);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

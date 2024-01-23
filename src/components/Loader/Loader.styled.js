@@ -9,5 +9,5 @@ export const StyledLoader = styled.div`
   height: 100%;
   inset: 0;
   z-index: 10;
-  background-color: var(--description-card);
+  background-color: var(--loader-bg);
 `;

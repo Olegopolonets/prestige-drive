@@ -5,7 +5,7 @@ export const StyledHeader = styled.header`
   display: flex;
   padding-top: 20px;
   padding-bottom: 20px;
-  background: var(--general-blue);
+  border-bottom: 7px solid var(--general-blue);
 
   div {
     display: flex;
@@ -21,10 +21,10 @@ export const StyledHeader = styled.header`
 
 export const StyledNavLink = styled(NavLink)`
   text-decoration: none;
-  color: black;
+  color: var(--general-blue);
   font-weight: 700;
   &.active {
-    color: white;
+    color: var(--general-blue-active);
     text-decoration: underline;
   }
 `;
@@ -34,5 +34,5 @@ export const StyledLogo = styled(NavLink)`
   align-items: center;
   gap: 5px;
   font-size: 20px;
-  color: var(--white);
+  color: var(--general-blue-active);
 `;

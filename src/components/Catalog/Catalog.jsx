@@ -33,7 +33,6 @@ const Catalog = () => {
   }, [dispatch]);
 
   const allCars = useSelector(selectorCars);
-  console.log(allCars.length);
 
   const handleLoadMoreClick = () => {
     if (isLoadMore) {
