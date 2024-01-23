@@ -36,3 +36,10 @@ Ensure you have the following installed on your machine:
    ```bash
    git clone https://github.com/Olegopolonets/prestige-drive.git
    ```
+2. Navigate to the project directory: `cd prestige-drive`
+
+3. Install dependencies: `npm install` or `yarn install`
+
+4. Start the development server: `npm run dev` or `yarn dev`
+
+5. Open your browser and visit `http://localhost:3000` to view the application.
