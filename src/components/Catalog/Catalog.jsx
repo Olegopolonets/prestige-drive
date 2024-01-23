@@ -1,3 +1,4 @@
+import React from "react";
 import { useEffect, useState } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -28,8 +29,8 @@ import {
 import Card from "./Card.jsx";
 import {
   changeFilters,
+  changeFirstLoad,
   changeSelectFilter,
-  isFirstLoad,
 } from "../../redux/carsSlice.js";
 
 const Catalog = () => {
@@ -39,7 +40,6 @@ const Catalog = () => {
   const isLoadMore = useSelector(selectisLoadMore);
   const allCars = useSelector(selectorCars);
 
-  /* filters */
   const [makeFilter, setMakeFilter] = useState("");
   const [rentalPriceFilter, setRentalPriceFilter] = useState(null);
   const [fromMileageFilter, setFromMileageFilter] = useState(null);
@@ -49,9 +49,6 @@ const Catalog = () => {
     dispatch(changeSelectFilter(selectedOp?.value));
   };
 
-  /*  */
-
-  /* select */
   const uniqueOptions = [...new Set(allCars?.map((item) => item?.make))];
   const arrOfOptions = uniqueOptions.sort();
 
@@ -78,9 +75,6 @@ const Catalog = () => {
     );
   };
 
-  /* */
-
-  /* */
   const filterSearch = (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
@@ -117,21 +111,19 @@ const Catalog = () => {
       toMileageFilter ? item.mileage <= toMileageFilter : true
     );
 
-  /* */
+  const handleLoadMoreClick = () => {
+    if (isLoadMore) {
+      dispatch(fetchCarsThunk(page + 1));
+      setPage((prevPage) => prevPage + 1);
+    }
+  };
+
   useEffect(() => {
     if (firstLoad) {
       dispatch(fetchCarsThunk(page));
-      dispatch(isFirstLoad(false));
-      setPage(page + 1);
+      dispatch(changeFirstLoad(false));
     }
-  }, [dispatch]);
-
-  const handleLoadMoreClick = () => {
-    if (isLoadMore) {
-      setPage(page + 1);
-      dispatch(fetchCarsThunk(page));
-    }
-  };
+  }, [dispatch, firstLoad, page]);
 
   return (
     <>

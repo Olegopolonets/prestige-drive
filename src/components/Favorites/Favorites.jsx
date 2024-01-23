@@ -1,4 +1,4 @@
-// import React from 'react'
+import React from "react";
 
 import Card from "../Catalog/Card.jsx";
 import { useSelector } from "react-redux";

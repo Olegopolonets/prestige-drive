@@ -108,8 +108,8 @@ export const StyledWrapperButton = styled.div`
 `;
 
 export const StyledCatalog = styled.div`
-  padding-top: 150px;
-  padding-bottom: 150px;
+  padding-top: 50px;
+  padding-bottom: 50px;
 `;
 
 export const StyledButtonLoadMore = styled.button`
@@ -127,8 +127,6 @@ export const StyledButtonLoadMore = styled.button`
     color: var(--general-blue-active);
   }
 `;
-
-/*  */
 
 export const selectStyle = {
   control: (styles) => ({

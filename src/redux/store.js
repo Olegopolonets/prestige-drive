@@ -1,6 +1,4 @@
 import carsSlice from "./carsSlice.js";
-
-// p
 import { configureStore } from "@reduxjs/toolkit";
 import {
   persistStore,

@@ -6,13 +6,10 @@ const initialState = {
   items: [],
   isLoading: false,
   favoriteList: [],
-  //
   isLoadMore: true,
   firstLoad: true,
   modalIsOpen: false,
   clickCardId: "",
-
-  //filters
   select: "",
   filters: {},
 };
@@ -33,9 +30,7 @@ export const carsSlice = createSlice({
       );
       toast.warning(`The car has been removed to the "Favorites"!`);
     },
-    isFirstLoad: (state, { payload }) => {
-      state.firstLoad = payload;
-    },
+
     changeModalOpen: (state, { payload }) => {
       state.modalIsOpen = payload;
     },
@@ -53,6 +48,9 @@ export const carsSlice = createSlice({
     changeFilters: (state, { payload }) => {
       state.filters = payload;
     },
+    changeFirstLoad: (state, { payload }) => {
+      state.firstLoad = payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -60,12 +58,13 @@ export const carsSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(fetchCarsThunk.fulfilled, (state, { payload }) => {
-        state.isLoading = false;
         if (payload.length < 12) {
           state.items = [...state.items, ...payload];
           state.isLoadMore = false;
+          state.isLoading = false;
         } else {
           state.items = [...state.items, ...payload];
+          state.isLoading = false;
         }
       })
       .addCase(fetchCarsThunk.rejected, (state, action) => {
@@ -78,11 +77,11 @@ export const carsSlice = createSlice({
 export const {
   addFavorite,
   deleteFavorite,
-  isFirstLoad,
   changeModalOpen,
   changeClickCardId,
   changeSelectFilter,
   changeFilters,
+  changeFirstLoad,
 } = carsSlice.actions;
 
 export default carsSlice.reducer;

@@ -1,4 +1,4 @@
-// import React from 'react'
+import React from "react";
 
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import {
@@ -9,7 +9,7 @@ import {
   StyledCardDescription,
   StyledCardInfo,
 } from "./Catalog.styled";
-import { useState } from "react";
+
 import {
   listFavorite,
   modalIsOpen,

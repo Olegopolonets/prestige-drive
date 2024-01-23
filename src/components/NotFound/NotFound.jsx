@@ -1,4 +1,3 @@
-// import React from "react";
 import notFoundImg from "../../img/404-image.webp";
 import { StyledNavLink, StyledNoFoundWrapper } from "./NotFound.styled";
 
