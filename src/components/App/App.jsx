@@ -4,10 +4,15 @@ import HomePage from "../../pages/HomePage";
 import CatalogPage from "../../pages/CatalogPage";
 import FavoritesPage from "../../pages/FavoritesPage";
 import NotFoundPage from "../../pages/NotFoundPage";
+import Loader from "../Loader/Loader";
+import { isLoading } from "../../redux/selectors";
+import { useSelector } from "react-redux";
 
 function App() {
+  const isLoader = useSelector(isLoading);
   return (
     <>
+      {isLoader && <Loader />}
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<HomePage />}></Route>

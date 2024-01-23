@@ -4,6 +4,7 @@ import "./index.css";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
+import { ToastContainer } from "react-toastify";
 // import { PersistGate } from 'redux-persist/integration/react'
 
 ReactDOM.createRoot(document.getElementById("root")).render(
@@ -12,6 +13,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       {/* <PersistGate loading={null} persistor={persistor}> */}
       <App />
       {/* </PersistGate> */}
+      <ToastContainer autoClose={1500} />
     </Provider>
   </BrowserRouter>
 );
