@@ -5,3 +5,4 @@ export const selectFirstLoad = (state) => state.cars.firstLoad;
 export const modalIsOpen = (state) => state.cars.modalIsOpen;
 export const selectClickCardId = (state) => state.cars.clickCardId;
 export const selectisLoadMore = (state) => state.cars.isLoadMore;
+export const selectedFilters = (state) => state.carsGallery.filters;

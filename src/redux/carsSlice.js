@@ -11,6 +11,10 @@ const initialState = {
   firstLoad: true,
   modalIsOpen: false,
   clickCardId: "",
+
+  //filters
+  select: "",
+  filters: {},
 };
 
 export const carsSlice = createSlice({
@@ -37,6 +41,17 @@ export const carsSlice = createSlice({
     },
     changeClickCardId: (state, { payload }) => {
       state.clickCardId = payload;
+    },
+    changeSelectFilter: (state, { payload }) => {
+      if (payload.length < 12) {
+        state.isLoadMore = false;
+        state.select = payload;
+      } else {
+        state.select = payload;
+      }
+    },
+    changeFilters: (state, { payload }) => {
+      state.filters = payload;
     },
   },
   extraReducers: (builder) => {
@@ -66,6 +81,8 @@ export const {
   isFirstLoad,
   changeModalOpen,
   changeClickCardId,
+  changeSelectFilter,
+  changeFilters,
 } = carsSlice.actions;
 
 export default carsSlice.reducer;

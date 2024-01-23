@@ -8,22 +8,116 @@ import {
   selectorCars,
 } from "../../redux/selectors.js";
 import { StyledContainer } from "../Container/Container.styled.js";
-// import { FaRegHeart } from "react-icons/fa";
-// import { FaHeart } from "react-icons/fa6";
+import Select, { components } from "react-select";
+
+import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
+
 import {
   StyledButtonLoadMore,
   StyledCarsList,
   StyledCatalog,
+  StyledFiltersForm,
+  StyledInputFilter,
+  StyledInputFrom,
+  StyledInputTo,
+  StyledNotifyEmpty,
+  StyledSelectFilter,
   StyledWrapperButton,
+  selectStyle,
 } from "./Catalog.styled.js";
 import Card from "./Card.jsx";
-import { isFirstLoad } from "../../redux/carsSlice.js";
+import {
+  changeFilters,
+  changeSelectFilter,
+  isFirstLoad,
+} from "../../redux/carsSlice.js";
 
 const Catalog = () => {
   const [page, setPage] = useState(1);
   const dispatch = useDispatch();
   const firstLoad = useSelector(selectFirstLoad);
   const isLoadMore = useSelector(selectisLoadMore);
+  const allCars = useSelector(selectorCars);
+
+  /* filters */
+  const [makeFilter, setMakeFilter] = useState("");
+  const [rentalPriceFilter, setRentalPriceFilter] = useState(null);
+  const [fromMileageFilter, setFromMileageFilter] = useState(null);
+  const [toMileageFilter, setToMileageFilter] = useState(null);
+
+  const getSelectValue = (selectedOp) => {
+    dispatch(changeSelectFilter(selectedOp?.value));
+  };
+
+  /*  */
+
+  /* select */
+  const uniqueOptions = [...new Set(allCars?.map((item) => item?.make))];
+  const arrOfOptions = uniqueOptions.sort();
+
+  const uniquePrices = [...new Set(allCars?.map((item) => item?.rentalPrice))];
+  const arrOfPrices = uniquePrices.sort((a, b) => a - b);
+
+  const DropdownIndicator = (props) => {
+    return (
+      <components.DropdownIndicator {...props}>
+        {props.selectProps.menuIsOpen ? (
+          <IoIosArrowUp
+            size={18}
+            label="Arrow up"
+            color={"var(--black-filter)"}
+          />
+        ) : (
+          <IoIosArrowDown
+            size={18}
+            label="Arrow down"
+            color={"var(--black-filter)"}
+          />
+        )}
+      </components.DropdownIndicator>
+    );
+  };
+
+  /* */
+
+  /* */
+  const filterSearch = (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+
+    const makeValue = formData.get("make");
+    const rentalPriceValue = formData.get("rentalPrice");
+    const fromMileageValue = formData.get("from");
+    const toMileageValue = formData.get("to");
+
+    setMakeFilter(makeValue || "");
+    setRentalPriceFilter(Number(rentalPriceValue));
+    setFromMileageFilter(Number(fromMileageValue));
+    setToMileageFilter(Number(toMileageValue));
+
+    dispatch(
+      changeFilters({
+        makeValue,
+        rentalPriceValue,
+        fromMileageValue,
+        toMileageValue,
+      })
+    );
+  };
+
+  const filteredGallery = allCars
+    .filter((item) => (makeFilter ? item.make === makeFilter : true))
+    .filter((item) =>
+      rentalPriceFilter ? item.rentalPrice === rentalPriceFilter : true
+    )
+    .filter((item) =>
+      fromMileageFilter ? item.mileage >= fromMileageFilter : true
+    )
+    .filter((item) =>
+      toMileageFilter ? item.mileage <= toMileageFilter : true
+    );
+
+  /* */
   useEffect(() => {
     if (firstLoad) {
       dispatch(fetchCarsThunk(page));
@@ -31,8 +125,6 @@ const Catalog = () => {
       setPage(page + 1);
     }
   }, [dispatch]);
-
-  const allCars = useSelector(selectorCars);
 
   const handleLoadMoreClick = () => {
     if (isLoadMore) {
@@ -45,8 +137,63 @@ const Catalog = () => {
     <>
       <StyledContainer>
         <StyledCatalog>
+          <StyledFiltersForm onSubmit={filterSearch}>
+            <StyledSelectFilter>
+              <label htmlFor="make">Car brand</label>
+              <Select
+                name="make"
+                options={arrOfOptions.map((make) => ({
+                  value: make,
+                  label: make,
+                }))}
+                placeholder="Enter the text"
+                styles={selectStyle}
+                onChange={getSelectValue}
+                components={{
+                  DropdownIndicator,
+                  IndicatorSeparator: () => null,
+                }}
+              />
+            </StyledSelectFilter>
+
+            <StyledSelectFilter>
+              <label htmlFor="rentalPrice">Price/ 1 hour</label>
+              <Select
+                options={arrOfPrices.map((price) => ({
+                  value: price,
+                  label: price,
+                }))}
+                placeholder="To $"
+                name="rentalPrice"
+                styles={selectStyle}
+                onChange={getSelectValue}
+                components={{
+                  DropdownIndicator,
+                  IndicatorSeparator: () => null,
+                }}
+              />
+            </StyledSelectFilter>
+
+            <StyledSelectFilter>
+              <label>Сar mileage / km</label>
+
+              <StyledInputFilter>
+                <StyledInputFrom type="number" placeholder="From" name="from" />
+                <StyledInputTo type="number" placeholder="To" name="to" />
+
+                <button type="submit">Search</button>
+              </StyledInputFilter>
+            </StyledSelectFilter>
+          </StyledFiltersForm>
+
+          {filteredGallery?.length === 0 && (
+            <StyledNotifyEmpty>
+              We have no cars matching your filter request
+            </StyledNotifyEmpty>
+          )}
+
           <StyledCarsList>
-            {allCars?.map((item, index) => {
+            {filteredGallery?.map((item, index) => {
               return <Card key={index} item={item} />;
             })}
           </StyledCarsList>
