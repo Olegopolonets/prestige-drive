@@ -13,7 +13,7 @@ import { useState } from "react";
 import {
   listFavorite,
   modalIsOpen,
-  selecClickCardId,
+  selectClickCardId,
 } from "../../redux/selectors";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -26,10 +26,10 @@ import Modal from "../Modal/Modal";
 
 const Card = ({ item }) => {
   const favoritesCars = useSelector(listFavorite);
-  //modal
+
   const isModalOpen = useSelector(modalIsOpen);
-  const selectedId = useSelector(selecClickCardId);
-  //modal
+  const selectedId = useSelector(selectClickCardId);
+
   const dispatch = useDispatch();
 
   const isFavorite = favoritesCars?.some((car) => car.id === item.id);

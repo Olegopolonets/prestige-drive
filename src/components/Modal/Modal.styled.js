@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
-export const StyledModalBackdrop = styled.div`
+export const StyledBackdrop = styled.div`
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  background: var(--accent-descr-text);
+  background: var(--description-card);
   z-index: 10;
   display: flex;
   justify-content: center;
@@ -14,7 +14,7 @@ export const StyledModalBackdrop = styled.div`
   height: 100%;
   width: 100%;
 `;
-export const StyledModalForm = styled.form`
+export const StyledFormModal = styled.form`
   width: 541px;
   height: 752px;
   background-color: var(--white);
@@ -32,7 +32,7 @@ export const StyledModalForm = styled.form`
   }
 `;
 
-export const StyledCloseBtn = styled.button`
+export const StyledClose = styled.button`
   position: absolute;
   top: 16px;
   right: 16px;
@@ -40,7 +40,7 @@ export const StyledCloseBtn = styled.button`
   outline: transparent;
   background-color: transparent;
 `;
-export const StyledTextWrapper = styled.div`
+export const StyledInfo = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -48,32 +48,32 @@ export const StyledTextWrapper = styled.div`
     font-family: "Manrope Medium";
     font-size: 18px;
     line-height: 1.33;
-    color: var(--descr-text);
+    color: var(--black-filter);
     margin-bottom: 8px;
 
     span {
-      color: var(--button);
+      color: var(--general-blue);
     }
   }
 `;
 
-export const StyledModalDesc = styled.div`
+export const StyledCharacteristic = styled.div`
   width: 300px;
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
   font-family: "Manrope Regular";
   font-size: 12px;
-  color: var(--accent-descr-text);
+  color: var(--description-card);
   margin-bottom: 14px;
   line-height: 1.5;
 `;
 
-export const StyledCharacteristic = styled.p`
+export const StyledDescription = styled.p`
   font-family: "Manrope Regular";
   font-size: 14px;
   line-height: 1.4;
-  color: var(--descr-text);
+  color: var(--black-filter);
   margin-bottom: 24px;
 `;
 
@@ -88,18 +88,18 @@ export const StyledAccessories = styled.div`
     font-family: "Manrope Medium";
     font-size: 14px;
     line-height: 1.43;
-    color: var(--descr-text);
+    color: var(--black-filter);
   }
   p {
     width: 450px;
-    color: var(--accent-descr-text);
+    color: var(--description-card);
     font-family: "Manrope Regular";
     font-size: 12px;
     line-height: 1.5;
   }
 `;
 
-export const StyledConditionsWrapper = styled.div`
+export const StyledConditions = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -111,7 +111,7 @@ export const StyledConditionsWrapper = styled.div`
     font-family: "Manrope Medium";
     font-size: 14px;
     line-height: 1.43;
-    color: var(--descr-text);
+    color: var(--black-filter);
   }
   ul {
     display: flex;
@@ -132,7 +132,7 @@ export const StyledConditionsWrapper = styled.div`
     line-height: 1.5;
 
     span {
-      color: var(--button);
+      color: var(--general-blue);
       font-family: "Montserrat Regular";
       font-size: 12px;
       line-height: 1.5;
@@ -140,7 +140,7 @@ export const StyledConditionsWrapper = styled.div`
   }
 `;
 
-export const StyledModalBtn = styled.a`
+export const StyledModalButton = styled.a`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -148,7 +148,7 @@ export const StyledModalBtn = styled.a`
   height: 44px;
   padding: 12px 50px;
   border-radius: 12px;
-  background-color: var(--button);
+  background-color: var(--general-blue);
   border: none;
   outline: transparent;
 
@@ -158,6 +158,6 @@ export const StyledModalBtn = styled.a`
   color: var(--white);
   &:hover,
   &:focus {
-    background-color: var(--button-active);
+    background-color: var(--general-blue-active);
   }
 `;

@@ -14,8 +14,9 @@ export const StyledNoFoundWrapper = styled.div`
 export const StyledNavLink = styled(NavLink)`
   font-size: 30px;
   color: var(--general-blue);
-  &.active {
+  transition: all 0.3s linear;
+  &:hover {
     color: var(--general-blue-active);
-    text-decoration: underline;
+    font-size: 600px;
   }
 `;

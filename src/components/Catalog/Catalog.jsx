@@ -33,7 +33,7 @@ const Catalog = () => {
   }, [dispatch]);
 
   const allCars = useSelector(selectorCars);
-  console.log("довжина", allCars.length);
+  console.log(allCars.length);
 
   const handleLoadMoreClick = () => {
     if (isLoadMore) {

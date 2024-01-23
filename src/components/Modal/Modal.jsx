@@ -5,14 +5,14 @@ import { changeModalOpen } from "../../redux/carsSlice";
 import { RxCross2 } from "react-icons/rx";
 import {
   StyledAccessories,
+  StyledBackdrop,
   StyledCharacteristic,
-  StyledCloseBtn,
-  StyledConditionsWrapper,
-  StyledModalBackdrop,
-  StyledModalBtn,
-  StyledModalDesc,
-  StyledModalForm,
-  StyledTextWrapper,
+  StyledClose,
+  StyledConditions,
+  StyledDescription,
+  StyledFormModal,
+  StyledInfo,
+  StyledModalButton,
 } from "./Modal.styled";
 
 const Modal = ({ item }) => {
@@ -40,50 +40,47 @@ const Modal = ({ item }) => {
     dispatch(changeModalOpen(false));
   };
 
-  const city = item?.address?.split(",")[1]?.trim();
-  const country = item?.address?.split(",")[2]?.trim();
-
   const combinedAccFunc = [...item.accessories, ...item.functionalities];
   const joinedAccFunc = combinedAccFunc.join(" | ");
 
   return (
     <>
-      <StyledModalBackdrop open={isModalOpen} onClick={clickBackdrop}>
-        <StyledModalForm>
-          <StyledCloseBtn
+      <StyledBackdrop open={isModalOpen} onClick={clickBackdrop}>
+        <StyledFormModal>
+          <StyledClose
             type="button"
             onClick={() => {
               dispatch(changeModalOpen(false));
             }}
           >
             <RxCross2 size={24} />
-          </StyledCloseBtn>
+          </StyledClose>
           <img
             src={item?.img || item?.photoLink}
             alt={item?.title}
             width={461}
             height={248}
           />
-          <StyledTextWrapper>
+          <StyledInfo>
             <h2>
               {item?.make}
               <span> {item?.model}</span>, {item?.year}
             </h2>
-            <StyledModalDesc>
-              <p>{city} |</p>
-              <p>{country} |</p>
+            <StyledCharacteristic>
+              <p>{item?.address?.split(",")[1]?.trim()} |</p>
+              <p>{item?.address?.split(",")[2]?.trim()} |</p>
               <p>Id: {item?.id}</p>
               <p>Year: {item?.year} |</p>
               <p>Type: {item?.type} </p>
               <p>Fuel Consumption: {item?.fuelConsumption} |</p>
               <p>Engine Size: {item?.engineSize}</p>
-            </StyledModalDesc>
-            <StyledCharacteristic>{item?.description}</StyledCharacteristic>
+            </StyledCharacteristic>
+            <StyledDescription>{item?.description}</StyledDescription>
             <StyledAccessories>
               <h3>Accessories and functionalities:</h3>
               <p>{joinedAccFunc}</p>
             </StyledAccessories>
-            <StyledConditionsWrapper>
+            <StyledConditions>
               <h3>Rental Conditions:</h3>
               <ul>
                 {item?.rentalConditions.split("\n").map((condition) => (
@@ -113,16 +110,16 @@ const Modal = ({ item }) => {
                   <span>&nbsp;{`${item?.rentalPrice.replace("$", "")}$`}</span>
                 </li>
               </ul>
-            </StyledConditionsWrapper>
-            <StyledModalBtn
+            </StyledConditions>
+            <StyledModalButton
               href="tel:+380730000000"
               onClick={hendleButtonClick}
             >
               Rental car
-            </StyledModalBtn>
-          </StyledTextWrapper>
-        </StyledModalForm>
-      </StyledModalBackdrop>
+            </StyledModalButton>
+          </StyledInfo>
+        </StyledFormModal>
+      </StyledBackdrop>
     </>
   );
 };

@@ -6,7 +6,7 @@ const NotFound = () => {
   return (
     <StyledNoFoundWrapper>
       <img src={notFoundImg} alt="not found" width={500} />
-      <StyledNavLink to={"/"}>Go to home</StyledNavLink>
+      <StyledNavLink to={"/"}>Go Home</StyledNavLink>
     </StyledNoFoundWrapper>
   );
 };
