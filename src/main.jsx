@@ -9,7 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 // import { PersistGate } from 'redux-persist/integration/react'
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <BrowserRouter basename="/prestige-drive">
+  <BrowserRouter basename="/prestige-drive" hashType="noslash">
     <Provider store={store}>
       <ToastContainer
         position="top-right"

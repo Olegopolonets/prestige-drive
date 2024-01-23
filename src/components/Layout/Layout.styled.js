@@ -15,7 +15,9 @@ export const StyledHeader = styled.header`
   }
   nav {
     display: flex;
-    gap: 30px;
+    justify-content: space-around;
+    align-items: center;
+    width: 30%;
   }
 `;
 
@@ -23,9 +25,12 @@ export const StyledNavLink = styled(NavLink)`
   text-decoration: none;
   color: var(--general-blue);
   font-weight: 700;
+  padding: 10px 20px;
   &.active {
-    color: var(--general-blue-active);
-    text-decoration: underline;
+    color: var(--white);
+
+    background-color: var(--general-blue-active);
+    border-radius: 10px;
   }
 `;
 
