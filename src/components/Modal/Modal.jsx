@@ -105,7 +105,7 @@ const Modal = ({ item }) => {
                 ))}
                 <li>
                   Mileage:{" "}
-                  <span>&nbsp;{Number(item?.mileage).toLocaleString()}</span>
+                  <span>&nbsp;{item?.mileage.toLocaleString("en-US")}</span>
                 </li>
                 <li>
                   Price:{" "}
