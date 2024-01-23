@@ -40,8 +40,10 @@ const Modal = ({ item }) => {
     dispatch(changeModalOpen(false));
   };
 
-  const combinedAccFunc = [...item.accessories, ...item.functionalities];
-  const joinedAccFunc = combinedAccFunc.join(" | ");
+  const accesAndFunctional = [
+    ...item.accessories,
+    ...item.functionalities,
+  ].join(" | ");
 
   return (
     <>
@@ -78,7 +80,7 @@ const Modal = ({ item }) => {
             <StyledDescription>{item?.description}</StyledDescription>
             <StyledAccessories>
               <h3>Accessories and functionalities:</h3>
-              <p>{joinedAccFunc}</p>
+              <p>{accesAndFunctional}</p>
             </StyledAccessories>
             <StyledConditions>
               <h3>Rental Conditions:</h3>
@@ -92,7 +94,7 @@ const Modal = ({ item }) => {
                             style={
                               word === "Minimum" || word === "age:"
                                 ? { color: "var(--modal-accent-text)" }
-                                : { color: "var(--button)" }
+                                : { color: "var(--general-blue)" }
                             }
                           >
                             {word}&nbsp;
